@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>SlideShow</title>
+        <script>
+            let image =  Array("/home/renu/Pictures/Berry.jpg","/home/renu/Pictures/Berryye.jpg","/home/renu/Pictures/BlueBerry.jpg");
+            let c = 0;
+            function nextImage(){
+                if(c!== image.length-1){
+                    c++;
+                }
+                
+             document.ss.src = image[c];
+            }
+            function previousImage(){
+                if(c!==0){
+                    c--;
+                }
+             document.ss.src = image[c];
+            }
+        </script>
+    </head>
+    <body>
+        <center>
+            <img src="/home/renu/Pictures/forest.jpg" height="400px" width="400px" name="ss">
+            <br>
+            <br>
+            <input type="button" name="NextImage" id="nextImage" value="NEXT" onclick="javascript:nextImage()">
+            <input type="button" name="PreviousImage" id="previousImage" value="PREVIOUS" onclick="javascript:previousImage()">
+        </center>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RegEx</title>
+    <script>
+        function valEmail(){
+            var emailPattern = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+            var email = document.getElementById("email").value; 
+            if(emailPattern.test(email)){
+                alert('Valid Email address');
+            }
+            else{
+                alert("Invalid Email Address");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Email Validation</h2>
+    <form>
+        <label for="email">Enter Email Address</label>
+        <input type="text" name="email" id="email">
+        <button type="button" onclick="javascript:valEmail()">Validate email</button>
+    </form>
+</body>
+</html>

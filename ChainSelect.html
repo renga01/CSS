@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chained Select Menu</title>
+</head>
+<body>
+
+<label for="continent">Select Continent:</label>
+<select id="continent" onchange="populateCountries()">
+    <option value="select">Select</option>
+    <option value="asia">Asia</option>
+    <option value="europe">Europe</option>
+    <!-- Add more continents as needed -->
+</select>
+
+<label for="country">Select Country:</label>
+<select id="country">
+    <option value="select">Select a continent first</option>
+</select>
+
+<script>
+    // Sample data for continents and countries
+    const continentData = {
+        asia: ["China", "India", "Japan", "South Korea"],
+        europe: ["Germany", "France", "Italy", "Spain"]
+        // Add more continents and countries as needed
+    };
+
+    function populateCountries() {
+        const continentSelect = document.getElementById("continent");
+        const countrySelect = document.getElementById("country");
+        
+        // Get the selected continent
+        const selectedContinent = continentSelect.value;
+
+        // Clear previous options in the country dropdown
+        countrySelect.innerHTML = '<option value="select">Select a country</option>';
+
+        // Populate countries based on the selected continent
+        if (selectedContinent !== 'select' && continentData[selectedContinent]) {
+            const countries = continentData[selectedContinent];
+            countries.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country;
+                option.text = country;
+                countrySelect.add(option);
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
