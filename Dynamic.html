@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Options</title>
+</head>
+<body>
+
+  <form>
+    <label for="category">Select a category:</label>
+    <select id="category" onchange="updateOptions()">
+      <option value="fruit">Fruit</option>
+      <option value="flower">Flower</option>
+      <option value="color">Color</option>
+    </select>
+
+    <label for="item">Select an item:</label>
+    <select id="item">
+      <!-- Default options for the Fruit category -->
+      <option value="apple">Apple</option>
+      <option value="banana">Banana</option>
+      <option value="orange">Orange</option>
+    </select>
+  </form>
+
+  <script>
+    function updateOptions() {
+      var category = document.getElementById('category').value;
+      var itemSelect = document.getElementById('item');
+
+      // Clear existing options
+      itemSelect.innerHTML = '';
+
+      // Add options based on the selected category
+      switch (category) {
+        case 'fruit':
+          addItemOptions(['apple', 'banana', 'orange']);
+          break;
+        case 'flower':
+          addItemOptions(['rose', 'tulip', 'daisy']);
+          break;
+        case 'color':
+          addItemOptions(['red', 'blue', 'green']);
+          break;
+        default:
+          // Default options
+          addItemOptions(['apple', 'banana', 'orange']);
+          break;
+      }
+    }
+
+    function addItemOptions(items) {
+      var itemSelect = document.getElementById('item');
+      items.forEach(function(item) {
+        var option = document.createElement('option');
+        option.value = item;
+        option.text = item.charAt(0).toUpperCase() + item.slice(1); // Capitalize first letter
+        itemSelect.add(option);
+      });
+    }
+
+    // Initial options based on the default category (Fruit)
+    updateOptions();
+  </script>
+
+</body>
+</html>
