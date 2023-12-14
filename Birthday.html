@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Countdown</title>
+</head>
+<body>
+
+  <h1>Birthday Countdown</h1>
+
+  <form>
+    <label for="birthdate">Enter your birth month and day (MM/DD):</label>
+    <input type="text" id="birthdate" placeholder="MM/DD" maxlength="5">
+    <button type="button" onclick="calculateDaysUntilBirthday()">Calculate</button>
+
+    <label for="daysUntilBirthday">Days until your birthday:</label>
+    <input type="text" id="daysUntilBirthday" readonly>
+  </form>
+
+  <script>
+    function calculateDaysUntilBirthday() {
+      var birthdateInput = document.getElementById('birthdate');
+      var daysUntilBirthdayInput = document.getElementById('daysUntilBirthday');
+
+      // Get current date
+      var currentDate = new Date();
+
+      // Get user's birthdate input
+      var birthdate = new Date(currentDate.getFullYear(), parseInt(birthdateInput.value.slice(0, 2)) - 1, parseInt(birthdateInput.value.slice(3)));
+
+      // Check if the birthdate for the current year has passed
+      if (birthdate < currentDate) {
+        // If it has, calculate the days until the next birthday in the next year
+        birthdate.setFullYear(currentDate.getFullYear() + 1);
+      }
+
+      // Calculate the difference in milliseconds
+      var timeDifference = birthdate - currentDate;
+
+      // Calculate the number of days
+      var daysUntilBirthday = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+      // Display the result in the second text field
+      daysUntilBirthdayInput.value = daysUntilBirthday + " days";
+    }
+  </script>
+
+</body>
+</html>
