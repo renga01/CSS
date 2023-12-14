@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Form</title>
+        <script>
+            function submit(){
+                custE = document.getElementById("Email").value;
+                let tbArr=[];
+                if(document.getElementById("Science").checked){
+                    tbArr.push(document.getElementById("Science").value)
+                }
+                if(document.getElementById("Maths").checked){
+                    tbArr.push(document.getElementById("Maths").value)
+                }
+                if(document.getElementById("History").checked){
+                    tbArr.push(document.getElementById("History").value)
+                }
+                if(document.getElementById("Geo").checked){
+                    tbArr.push(document.getElementById("Geo").value)
+                }
+                let Pay;
+                if(document.getElementById("Check").checked){
+                    Pay = document.getElementById("Check").name;
+                }
+                else if(document.getElementById("UPI").checked){
+                    Pay = document.getElementById("UPI").value;
+                }
+                if(document.getElementById("Cash").checked){
+                    Pay = document.getElementById("Cash").value;
+                }
+             msg = "Customer Email is :"+custE +"\n"+ "Textbooks are:"+tbArr+"\n"+"Payment Method:"+Pay;
+             alert(msg);
+            }
+        </script>
+    </head>
+    <body>
+        <h3>Login</h3>
+        <form form="Login" action="javascript:submit()">
+            <h4>Username</h2>
+            <input type="text" id="Email" placeholder="Enter Email">
+            <br>
+            <input type="checkbox" name="Science" id="Science" value="Science Book">
+            <label for="Science">Science Book</label>
+            <input type="checkbox" name="Maths" id="Maths" value="Maths Book">
+            <label for="Maths">Maths Book</label>
+            <input type="checkbox" name="History" id="History" value="History Book">
+            <label for="History">History Book</label>
+            <input type="checkbox" name="Geo" id="Geo" value="Geo Book">
+            <label for="Geo">Geo Book</label>
+            <br>
+            <input type="radio" name="Check" id="Check">
+            <label for="Check">Check</label>
+            <br>
+            <input type="radio" name="UPI" id="UPI" value="UPI">
+            <label for="UPI">UPI</label>
+            <br>
+            <input type="radio" name="Cash" id="Cash">
+            <label for="Check">Cash</label>
+            <br>
+            <input type="submit" value="Login">
+        </form>
+    </body>
+</html>
