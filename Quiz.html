@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiple-Choice Quiz</title>
+</head>
+<body>
+
+  <h1>Multiple-Choice Quiz</h1>
+
+  <form id="quizForm">
+    <fieldset>
+      <legend>Question 1:</legend>
+      <p>What is the capital of France?</p>
+      <label>
+        <input type="radio" name="q1" value="a"> a) Berlin
+      </label>
+      <label>
+        <input type="radio" name="q1" value="b"> b) Madrid
+      </label>
+      <label>
+        <input type="radio" name="q1" value="c"> c) Paris
+      </label>
+      <label>
+        <input type="radio" name="q1" value="d"> d) Rome
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 2:</legend>
+      <p>Which planet is known as the Red Planet?</p>
+      <label>
+        <input type="radio" name="q2" value="a"> a) Venus
+      </label>
+      <label>
+        <input type="radio" name="q2" value="b"> b) Mars
+      </label>
+      <label>
+        <input type="radio" name="q2" value="c"> c) Jupiter
+      </label>
+      <label>
+        <input type="radio" name="q2" value="d"> d) Saturn
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 3:</legend>
+      <p>What is the largest mammal in the world?</p>
+      <label>
+        <input type="radio" name="q3" value="a"> a) Elephant
+      </label>
+      <label>
+        <input type="radio" name="q3" value="b"> b) Blue Whale
+      </label>
+      <label>
+        <input type="radio" name="q3" value="c"> c) Giraffe
+      </label>
+      <label>
+        <input type="radio" name="q3" value="d"> d) Polar Bear
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 4:</legend>
+      <p>What is the capital of Japan?</p>
+      <label>
+        <input type="radio" name="q4" value="a"> a) Beijing
+      </label>
+      <label>
+        <input type="radio" name="q4" value="b"> b) Tokyo
+      </label>
+      <label>
+        <input type="radio" name="q4" value="c"> c) Seoul
+      </label>
+      <label>
+        <input type="radio" name="q4" value="d"> d) Bangkok
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 5:</legend>
+      <p>Who wrote the play "Romeo and Juliet"?</p>
+      <label>
+        <input type="radio" name="q5" value="a"> a) William Shakespeare
+      </label>
+      <label>
+        <input type="radio" name="q5" value="b"> b) Jane Austen
+      </label>
+      <label>
+        <input type="radio" name="q5" value="c"> c) Charles Dickens
+      </label>
+      <label>
+        <input type="radio" name="q5" value="d"> d) Mark Twain
+      </label>
+    </fieldset>
+
+    <!-- Submit button -->
+    <button type="button" onclick="checkAnswers()">Submit</button>
+
+    <!-- Show Answers button -->
+    <button type="button" onclick="showCorrectAnswers()">Show Answers</button>
+  </form>
+
+  <script>
+    var correctAnswers = ['c', 'b', 'b', 'b', 'a']; // Correct answers for each question
+    var userAnswers = [];
+
+    function checkAnswers() {
+      var quizForm = document.getElementById('quizForm');
+
+      // Get user's answers
+      for (var i = 1; i <= 5; i++) {
+        var questionName = 'q' + i;
+        var selectedAnswer = document.querySelector('input[name="' + questionName + '"]:checked');
+
+        if (selectedAnswer) {
+          userAnswers.push(selectedAnswer.value);
+        } else {
+          userAnswers.push(null);
+        }
+      }
+
+      alert('Answers submitted successfully!');
+    }
+
+    function showCorrectAnswers() {
+      var results = '';
+
+      for (var i = 0; i < 5; i++) {
+        var questionNumber = i + 1;
+        var userAnswer = userAnswers[i];
+        var correctAnswer = correctAnswers[i];
+
+        results += 'Question ' + questionNumber + ': ';
+
+        if (userAnswer === correctAnswer) {
+          results += 'Correct!\n';
+        } else {
+          results += 'Wrong! Correct answer: ' + correctAnswer + '\n';
+        }
+      }
+
+      alert(results);
+    }
+  </script>
+
+</body>
+</html>
